@@ -20,9 +20,9 @@ Po czym umieści wszystkie <li> na liście podczas jednej operacji ul#ingredient
 const findUl = document.querySelector("#ingredients");
 // console.log(findUl);
 
-const secondTask = ingredients.forEach((ingredient) => {
-  let ingredientList = document.createElement("li"); //Utworzy oddzielny element
-  ingredientList.textContent = ingredient; //Doda nazwę elementu jako jego zawartość tekstową.
-  ingredientList.classList.add("item"); // Doda do elementu klasę item.
+const secondTask = ingredients.forEach((i) => {
+  let ingredient = document.createElement("li"); //Utworzy oddzielny element
+  ingredient.textContent = i; //Doda nazwę elementu jako jego zawartość tekstową.
+  ingredient.classList.add("item"); // Doda do elementu klasę item.
   findUl.append(ingredient);
 });
