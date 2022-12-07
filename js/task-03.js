@@ -23,23 +23,36 @@ Aby utworzyć znacznik użyj łańcuchów szablonowych i metody insertAdjacentHT
 Wszystkie elementy galerii powinny być dodawane do DOM podczas jednej operacji.
 Ulepsz galerię używając flexboxów lub gridów poprzez klasy CSS.
 */
-
+/*
+// my trial
 const gallery = document.querySelector("ul.gallery"); // find ul in html
-// console.log(gallery); // log to check if OK
+console.log(gallery); // log to check if OK
 
 const imageMarkup = images
-  .map((image) => `<li><img></li>`) // creating img list els
-  .join(""); //spacing betweetn els
+.map((image) => `<li><img></li>`) // creating img list els
+.join(""); //spacing betweetn els
 gallery.insertAdjacentHTML("afterbegin", imageMarkup); //add to html
 
-// tutaj petala ktora będzie znajdywać img i dodawać odpowiednie url i alt?
+    `<li style="padding: 10px; list-style-type: none; display: flex;" >
+    <img height="200" width=auto src="${imageItem.url}" alt="${imageItem.alt} "style="border: solid brown 2px"/>
+    </li>`
 
-// trial if this works
-// const galleryListImgs = document.querySelector("ul.gallery > li > img"); //find created img in hmtl
-// console.log(galleryListImgs); //check if found
+*/
 
-// galleryListImgs.src =
-//   "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
-// galleryListImgs.alt = "White and Black Long Fur Cat";
+const galleryList = document.querySelector("ul.gallery"); //find ul in html
 
-console.log("the5 end");
+if (galleryList && galleryList.classList) {
+  galleryList.classList.add("container");
+} // ADVANCED-checks if galleryList is at all in HTML and has classList. NOT NECESSARY
+
+images.forEach((imageItem) => {
+  galleryList.insertAdjacentHTML(
+    "beforeend",
+    `<li><img height="200" width=auto src="${imageItem.url}" alt="${imageItem.alt}"/></li>`
+  );
+}); //creates li with img in ul.gallery for every imageItem from images
+
+//adding styles to the html:
+const listItem = document.querySelectorAll("ul.gallery > li"); // for li
+console.log(listItem);
+listItem.style.padding = "10px"; //Uncaught TypeError: Cannot set properties of undefined (setting 'padding')
