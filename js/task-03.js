@@ -23,21 +23,6 @@ Aby utworzyć znacznik użyj łańcuchów szablonowych i metody insertAdjacentHT
 Wszystkie elementy galerii powinny być dodawane do DOM podczas jednej operacji.
 Ulepsz galerię używając flexboxów lub gridów poprzez klasy CSS.
 */
-/*
-// my trial
-const gallery = document.querySelector("ul.gallery"); // find ul in html
-console.log(gallery); // log to check if OK
-
-const imageMarkup = images
-.map((image) => `<li><img></li>`) // creating img list els
-.join(""); //spacing betweetn els
-gallery.insertAdjacentHTML("afterbegin", imageMarkup); //add to html
-
-    `<li style="padding: 10px; list-style-type: none; display: flex;" >
-    <img height="200" width=auto src="${imageItem.url}" alt="${imageItem.alt} "style="border: solid brown 2px"/>
-    </li>`
-
-*/
 
 const galleryList = document.querySelector("ul.gallery"); //find ul in html
 
@@ -45,14 +30,27 @@ if (galleryList && galleryList.classList) {
   galleryList.classList.add("container");
 } // ADVANCED-checks if galleryList is at all in HTML and has classList. NOT NECESSARY
 
-images.forEach((imageItem) => {
-  galleryList.insertAdjacentHTML(
-    "beforeend",
-    `<li><img height="200" width=auto src="${imageItem.url}" alt="${imageItem.alt}"/></li>`
-  );
-}); //creates li with img in ul.gallery for every imageItem from images
+images.forEach((e) => {
+  const listEl = document.createElement("li");
+  const imgEl = document.createElement("img");
+  imgEl.src = e.url;
+  imgEl.alt = e.alt;
+  imgEl.width = "300";
+  listEl.appendChild(imgEl);
+  galleryList.insertAdjacentElement("beforeend", listEl);
+});
 
-//adding styles to the html:
-const listItem = document.querySelectorAll("ul.gallery > li"); // for li
-console.log(listItem);
-listItem.style.padding = "10px"; //Uncaught TypeError: Cannot set properties of undefined (setting 'padding')
+/*
+//Mariusza kod
+const list = document.querySelector(".gallery")
+images.map(createHTML);
+
+function createHTML(item) {
+  let listItem = document.createElement("li");
+  let image = document.createElement("img");
+  image.src = item.url;
+  image.alt = item.alt;
+  listItem.appendChild(image);
+  list.appendChild(listItem);
+}
+*/
