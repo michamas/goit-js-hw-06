@@ -42,6 +42,8 @@ images.forEach((e) => {
 
 /*
 //Mariusza kod
+
+1. Mariusza
 const list = document.querySelector(".gallery")
 images.map(createHTML);
 
@@ -53,4 +55,29 @@ function createHTML(item) {
   listItem.appendChild(image);
   list.appendChild(listItem);
 }
+
+2. Mój poprawiony
+const galleryList = document.querySelector("ul.gallery"); //find ul in html
+
+if (galleryList && galleryList.classList) {
+  galleryList.classList.add("container");
+} // ADVANCED-checks if galleryList is at all in HTML and has classList. NOT NECESSARY
+
+images.forEach((imageItem) => {
+  galleryList.insertAdjacentHTML(
+    "beforeend",
+    `<li><img height="200" width=auto src="${imageItem.url}" alt="${imageItem.alt}"/></li>`
+  );
+}); //creates li with img in ul.gallery for every imageItem from images
+
+// //adding styles to the html:
+const listItem = document.querySelectorAll("ul.gallery > li"); // for li
+// console.log(listItem);
+for(let item of listItem) {
+  item.style.padding = "10px"; //Uncaught TypeError: Cannot set properties of undefined (setting 'padding')
+  console.log(listItem);  
+}
+
+
+
 */
