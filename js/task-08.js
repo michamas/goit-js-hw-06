@@ -12,3 +12,20 @@ z upomnieniem o tym, że wszystkie pola powinny zostać wypełnione.
 5. Umieść obiekt z wprowadzonymi danymi do wiersza poleceń 
 i wyczyść wartości pól formularza metodą reset.
 */
+
+const form = document.querySelector(".login-form");
+
+form.addEventListener("submit", handleSubmit);
+
+function handleSubmit(event) {
+  event.preventDefault;
+  const {
+    elements: { email, password },
+  } = event.currentTarget;
+
+  if (email.value === "" || password.value === "") {
+    return window.alert("Fill all the fields of gold!");
+  }
+  event.currentTarget.reset();
+  console.log(`Login: ${email.value}, Password: ${password.value}`);
+}
