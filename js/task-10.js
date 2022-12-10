@@ -21,3 +21,24 @@ Użyj gotowej funkcji getRandomHexColor aby otrzymać kolor.
 Utwórz funkcję destroyBoxes(), która usuwa zawartość div#boxes, 
 tym samym usuwając wszystkie utworzone elementy.
 */
+
+const inputField = document.querySelector("input");
+const buttonCreate = document.querySelector("button[data-create]");
+const buttonDestroy = document.querySelector("button[data-destroy]");
+const boxesLocation = document.querySelector("#boxes");
+let boxWidth = "30px";
+let boxHeight = boxWidth;
+let newBox;
+
+function createBoxes(event) {
+  let newBox = document.createElement("div");
+  newBox.style.border = "2px solid red";
+  newBox.style.height = "30px";
+  newBox.style.width = "30px";
+  boxesLocation.append(newBox);
+  console.log("created");
+}
+
+// const destroyBoxes = () => {};
+buttonCreate.addEventListener("click", createBoxes);
+// buttonDestroy.addEventListener("click", destroyBoxes);
