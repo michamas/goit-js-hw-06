@@ -29,7 +29,6 @@ const buttonDestroy = document.querySelector("button[data-destroy]");
 const boxDiv = document.querySelector("#boxes");
 
 const boxInitialDim = "30px";
-// console.log(typeof parseInt(boxDimIncrement));
 
 function createBoxes(event) {
   const numberOfBoxes = inputField.value;
@@ -38,14 +37,18 @@ function createBoxes(event) {
   for (let i = 0; i < numberOfBoxes; i++) {
     let newBox = document.createElement("div");
     boxDiv.append(newBox);
-    const boxDimIncrement = `${i}*10`;
-    newBox.style.height = `(30+${boxDimIncrement})px`;
-    newBox.style.width = `(30+${boxDimIncrement})px`;
+    const boxSize = 30 + i * 10;
+    newBox.style.height = `${boxSize}px`;
+    newBox.style.width = `${boxSize}px`;
     newBox.style.backgroundColor = getRandomHexColor();
+    newBox.classList.add("new-box");
   }
   console.log(`I've created ${inputField.value} boxes.`);
 }
 
-// const destroyBoxes = () => {};
+const destroyBoxes = () => {
+  document.getElementById("boxes").innerHTML = "";
+};
+
 buttonCreate.addEventListener("click", createBoxes);
-// buttonDestroy.addEventListener("click", destroyBoxes);
+buttonDestroy.addEventListener("click", destroyBoxes);
