@@ -10,6 +10,7 @@ const inputSlide = document.querySelector("#font-size-control");
 console.log(inputSlide.value);
 const spanToChange = document.querySelector("#text");
 // console.log(spanToChange);
+spanToChange.style.fontSize = "40px";
 
 const handleSlide = () => {
   spanToChange.style.fontSize = `${inputSlide.value}px`;

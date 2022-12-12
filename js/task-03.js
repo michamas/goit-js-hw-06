@@ -36,7 +36,12 @@ images.forEach((e) => {
   imgEl.src = e.url;
   imgEl.alt = e.alt;
   imgEl.width = "300";
+  imgEl.style.padding = "5px";
   listEl.appendChild(imgEl);
+  galleryList.style.listStyle = "none";
+  galleryList.style.display = "flex";
+  galleryList.style.alignItems = "center";
+  galleryList.style.flexDirection = "column";
   galleryList.insertAdjacentElement("beforeend", listEl);
 });
 

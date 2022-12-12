@@ -6,8 +6,13 @@ Jeśli pole input jest puste, w spanie powinien wyświetlić się komunikat "Ano
 
 const inputName = document.querySelector("#name-input");
 console.log(inputName);
+console.log(typeof inputName.value);
 const outputName = document.querySelector("#name-output");
 
 inputName.addEventListener("input", (event) => {
-  outputName.textContent = event.currentTarget.value;
+  if (inputName.value === "") {
+    outputName.textContent = "Anonymous auto";
+  } else {
+    outputName.textContent = event.currentTarget.value;
+  }
 });

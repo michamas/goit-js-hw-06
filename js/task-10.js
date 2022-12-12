@@ -34,7 +34,15 @@ function createBoxes(event) {
   const numberOfBoxes = inputField.value;
   console.log(`Number of boxes to create: ${inputField.value}`);
 
-  for (let i = 0; i < numberOfBoxes; i++) {
+  let initialNumbOfBoxes;
+
+  if ((boxDiv.innerHTML = "")) {
+    initialNumbOfBoxes = 0;
+  } else {
+    initialNumbOfBoxes = boxDiv.getElementsByTagName("div").length;
+  }
+
+  for (let i = initialNumbOfBoxes; i < numberOfBoxes; i++) {
     let newBox = document.createElement("div");
     boxDiv.append(newBox);
     const boxSize = 30 + i * 10;
@@ -48,6 +56,7 @@ function createBoxes(event) {
 
 const destroyBoxes = () => {
   document.getElementById("boxes").innerHTML = "";
+  inputField.value = "";
 };
 
 buttonCreate.addEventListener("click", createBoxes);
