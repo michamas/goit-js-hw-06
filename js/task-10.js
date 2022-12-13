@@ -34,18 +34,19 @@ function createBoxes(event) {
   const numberOfBoxes = inputField.value;
   console.log(`Number of boxes to create: ${inputField.value}`);
 
-  let initialNumbOfBoxes;
+  // let initialNumbOfBoxes;
 
-  if ((boxDiv.innerHTML = "")) {
-    initialNumbOfBoxes = 0;
-  } else {
-    initialNumbOfBoxes = boxDiv.getElementsByTagName("div").length;
-  }
+  // if ((boxDiv.innerHTML = "")) {
+  //   initialNumbOfBoxes = 0;
+  // } else {
+  //   initialNumbOfBoxes = boxDiv.getElementsByTagName("div").length;
+  // }
 
-  for (let i = initialNumbOfBoxes; i < numberOfBoxes; i++) {
+  for (let i = 0; i < numberOfBoxes; i++) {
     let newBox = document.createElement("div");
+    newBox.classList.add("js-newBox");
     boxDiv.append(newBox);
-    const boxSize = 30 + i * 10;
+    const boxSize = 30 + boxCounter() * 10;
     newBox.style.height = `${boxSize}px`;
     newBox.style.width = `${boxSize}px`;
     newBox.style.backgroundColor = getRandomHexColor();
@@ -53,6 +54,11 @@ function createBoxes(event) {
   }
   console.log(`I've created ${inputField.value} boxes.`);
 }
+
+const boxCounter = () => {
+  let box = document.querySelectorAll(".js-newBox");
+  return box.length;
+};
 
 const destroyBoxes = () => {
   document.getElementById("boxes").innerHTML = "";
